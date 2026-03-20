@@ -366,13 +366,13 @@
 
 ### Q31: 在資料處理流程中，處理「遺缺值」的常見方法包括填補與刪除。請問在決定是否刪除包含大量遺缺值的記錄時，最重要的考量因素是什麼？
 
-- <span style='color: #0066cc; font-weight: bold;'>(A) 遺缺值的具體數值大小</span>
+- (A) 遺缺值的具體數值大小
 - (B) 處理遺缺值所需的時間成本
-- (C) 刪除這些記錄是否會嚴重影響資料的代表性
+- <span style='color: #0066cc; font-weight: bold;'>(C) 刪除這些記錄是否會嚴重影響資料的代表性</span>
 - (D) 目前可用的資料分析工具的功能限制
 
-<span style='color: #008000; font-weight: bold;'>✅ 正確解答：(A) 遺缺值的具體數值大小</span>  
-<span style='color: #646464;'>💡 為什麼？ 使用平均值、中位數或插補法填補，能在不嚴重影響資料集大小情況下保留特徵。</span>
+<span style='color: #008000; font-weight: bold;'>✅ 正確解答：(C) 刪除這些記錄是否會嚴重影響資料的代表性</span>  
+<span style='color: #646464;'>💡 為什麼？ 決定是否刪除帶有大量遺缺值的記錄時，最關鍵的考量是「刪除後是否會使資料集喪失代表性或平衡性」。若刪除後特定族群或情境的樣本嚴重減少，會導致模型的偏誤；相對地，遺缺值的具體大小並非決策的核心。</span>
 
 ---
 
@@ -390,13 +390,13 @@
 
 ### Q33: 相關性分析旨在測量兩個變量之間的關係。請問皮爾森相關係數主要衡量哪種關係？
 
-- <span style='color: #0066cc; font-weight: bold;'>(A) 非線性關係</span>
+- (A) 非線性關係
 - (B) 時間序列上的依賴關係
-- (C) 線性關係
+- <span style='color: #0066cc; font-weight: bold;'>(C) 線性關係</span>
 - (D) 因果關係
 
-<span style='color: #008000; font-weight: bold;'>✅ 正確解答：(A) 非線性關係</span>  
-<span style='color: #646464;'>💡 為什麼？ Pearson係數專門用於評估兩連續變數間的「線性」相關程度。</span>
+<span style='color: #008000; font-weight: bold;'>✅ 正確解答：(C) 線性關係</span>  
+<span style='color: #646464;'>💡 為什麼？ 皮爾森相關係數（Pearson Correlation Coefficient）專門用於衡量兩個連續變數之間「線性」相關的強度與方向，值域介於 -1（完全負相關）到 +1（完全正相關）之間。若需衡量非線性或排名關係，應改用史比曼（Spearman）等級相關係數。</span>
 
 ---
 
@@ -444,7 +444,7 @@
 - (D) 增加正則化項
 
 <span style='color: #008000; font-weight: bold;'>✅ 正確解答：(A) 增加訓練數據量</span>  
-<span style='color: #646464;'>💡 為什麼？ 本題可從AI基本概念或上下文推斷最佳選項。</span>
+<span style='color: #646464;'>💡 為什麼？ 增加訓練數據量讓模型見過更多樣化的範例，是緩解過擬合最根本的方式之一。更豐富的資料能使模型學到更通用的規律，而非只記住少數訓練案例的特定雜訊，自然提升泛化能力。</span>
 
 ---
 
@@ -594,13 +594,13 @@
 
 ### Q50: 根據《金融業運用人工智慧指引》，為落實透明性與可解釋性原則，金融機構在使用AI與消費者互動時，應採取哪些做法？
 
-- <span style='color: #0066cc; font-weight: bold;'>(A) 僅需內部了解AI的運作方式，無需向消費者說明</span>
+- (A) 僅需內部了解AI的運作方式，無需向消費者說明
 - (B) 可以選擇不揭露AI的使用以保護商業機密
-- (C) 應適當揭露其正考慮之金融商品或服務係由AI提供的，並說明AI系統的功能與預期表現
+- <span style='color: #0066cc; font-weight: bold;'>(C) 應適當揭露其正考慮之金融商品或服務係由AI提供的，並說明AI系統的功能與預期表現</span>
 - (D) 只需要在消費者提出疑問時才進行簡要說明
 
-<span style='color: #008000; font-weight: bold;'>✅ 正確解答：(A) 僅需內部了解AI的運作方式，無需向消費者說明</span>  
-<span style='color: #646464;'>💡 為什麼？ 透明度與揭露機制的建立旨在讓使用者理解AI的決策並產生信任。</span>
+<span style='color: #008000; font-weight: bold;'>✅ 正確解答：(C) 應適當揭露其正考慮之金融商品或服務係由AI提供的，並說明AI系統的功能與預期表現</span>  
+<span style='color: #646464;'>💡 為什麼？ 根據《金融業運用人工智慧指引》，透明性原則要求金融機構應向消費者主動揭露使用AI提供服務的事實，並說明其功能與預期表現，以確保消費者的知情權，建立信任基礎。「僅需內部了解」違反了可解釋性的要求。</span>
 
 ---
 
@@ -630,37 +630,37 @@
 
 ### Q53: 將生成式AI與No Code / Low Code平台結合使用時，需要謹慎評估的考量因素是：*
 
-- <span style='color: #0066cc; font-weight: bold;'>(A) 這種結合可以完全避免資料安全和隱私風險</span>
-- (B) 生成式AI可能產生不準確或不符預期的內容，而No Code / Low Code平台可能缺乏嚴謹的審核與驗證流程
+- (A) 這種結合可以完全避免資料安全和隱私風險
+- <span style='color: #0066cc; font-weight: bold;'>(B) 生成式AI可能產生不準確或不符預期的內容，而No Code / Low Code平台可能缺乏嚴謹的審核與驗證流程</span>
 - (C) 這種結合會顯著增加應用程式的開發成本
 - (D) 這種結合可以完全替代專業的AI開發團隊
 
-<span style='color: #008000; font-weight: bold;'>✅ 正確解答：(A) 這種結合可以完全避免資料安全和隱私風險</span>  
-<span style='color: #646464;'>💡 為什麼？ 無程式碼/低程式碼旨在透過視覺化介面簡化開發，讓一般業務人員也能建立AI應用。</span>
+<span style='color: #008000; font-weight: bold;'>✅ 正確解答：(B) 生成式AI可能產生不準確或不符預期的內容，而No Code / Low Code平台可能缺乏嚴謹的審核與驗證流程</span>  
+<span style='color: #646464;'>💡 為什麼？ 結合生成式AI與No Code/Low Code時，最需要謹慎的風險在於：AI可能產生幻覺或不正確的輸出，而視覺化開發平台往往缺乏嚴謹的單元測試與驗證機制，容易讓錯誤的AI輸出直接流入業務流程。絕非「完全避免安全風險」，安全隱患依然存在。</span>
 
 ---
 
 ### Q54: 在使用生成式AI模型時，提示詞工程（Prompt Engineering）的重要性體現在：*
 
-- <span style='color: #0066cc; font-weight: bold;'>(A) 它主要用於分析模型的訓練數據</span>
+- (A) 它主要用於分析模型的訓練數據
 - (B) 它決定了模型部署的硬體需求
-- (C) 它影響模型生成回應的品質、相關性和風格
+- <span style='color: #0066cc; font-weight: bold;'>(C) 它影響模型生成回應的品質、相關性和風格</span>
 - (D) 它負責監控模型的運行效能
 
-<span style='color: #008000; font-weight: bold;'>✅ 正確解答：(A) 它主要用於分析模型的訓練數據</span>  
-<span style='color: #646464;'>💡 為什麼？ Prompt工程能直接控制及引導模型輸出符合預期情境與準確度的結果。</span>
+<span style='color: #008000; font-weight: bold;'>✅ 正確解答：(C) 它影響模型生成回應的品質、相關性和風格</span>  
+<span style='color: #646464;'>💡 為什麼？ 提示詞工程（Prompt Engineering）是設計高效指令以引導生成式AI產出符合預期回應的技術。精心設計的提示詞能直接決定模型回應的準確性、相關性與語言風格，與訓練數據分析、硬體需求或效能監控完全無關。</span>
 
 ---
 
 ### Q55: 企業在導入生成式AI的初期階段，應該優先考慮：*
 
-- <span style='color: #0066cc; font-weight: bold;'>(A) 大規模採購最新的AI硬體設備</span>
-- (B) 明確自身需求與業務痛點，深入分析現有營運模式與挑戰
+- (A) 大規模採購最新的AI硬體設備
+- <span style='color: #0066cc; font-weight: bold;'>(B) 明確自身需求與業務痛點，深入分析現有營運模式與挑戰</span>
 - (C) 對所有員工進行全面的AI技術培訓
 - (D) 直接將生成式AI應用於核心業務流程
 
-<span style='color: #008000; font-weight: bold;'>✅ 正確解答：(A) 大規模採購最新的AI硬體設備</span>  
-<span style='color: #646464;'>💡 為什麼？ 本題可從AI基本概念或上下文推斷最佳選項。</span>
+<span style='color: #008000; font-weight: bold;'>✅ 正確解答：(B) 明確自身需求與業務痛點，深入分析現有營運模式與挑戰</span>  
+<span style='color: #646464;'>💡 為什麼？ 導入AI的首要步驟是「確認問題，再找解法」。企業應先釐清自身的業務痛點與需求，評估AI能否真正帶來價值，避免盲目採購昂貴設備。先買硬體後才找應用場景，是數位轉型失敗的常見原因。</span>
 
 ---
 
@@ -702,13 +702,13 @@
 
 ### Q59: 當企業將資料安全管理外包給第三方服務供應商時，這屬於哪一種風險應對策略？*
 
-- <span style='color: #0066cc; font-weight: bold;'>(A) 風險緩解</span>
-- (B) 風險轉移
+- (A) 風險緩解
+- <span style='color: #0066cc; font-weight: bold;'>(B) 風險轉移</span>
 - (C) 風險接受
 - (D) 風險規避
 
-<span style='color: #008000; font-weight: bold;'>✅ 正確解答：(A) 風險緩解</span>  
-<span style='color: #646464;'>💡 為什麼？ 制定嚴格的權限查核與合規架構，是資料防護的一把鎖。</span>
+<span style='color: #008000; font-weight: bold;'>✅ 正確解答：(B) 風險轉移</span>  
+<span style='color: #646464;'>💡 為什麼？ 將資料安全管理外包給第三方，是將潛在的損失責任與部分風險「轉移（Transfer）」給外部專業供應商的策略。風險緩解是整合內部措施降低威脅發生的可能性，而外包並不減少威脅本身，僅轉移了責任承擔方。</span>
 
 ---
 

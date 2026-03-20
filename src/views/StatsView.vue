@@ -124,12 +124,25 @@ function copySyncLink() {
 
 function sendSyncEmail() {
   const email = prompt('請輸入您的電子信箱：')
-  if (email && /^\S+@\S+\.\S+$/.test(email)) {
-    const url = getSyncUrl()
-    const subject = encodeURIComponent('iPAS AI 應用規劃師 - 學習進度同步')
-    const body = encodeURIComponent(`您好！\n\n這是在電腦端產生的學習進度同步連結。\n請在手機或其他裝置點擊下方連結以匯入進度：\n\n${url}\n\n(注意：匯入後會覆蓋該裝置原本的進度)`)
-    window.location.href = `mailto:${email}?subject=${subject}&body=${body}`
-  } else if (email) {
+  if (!email) return
+
+  if (/^\S+@\S+\.\S+$/.test(email)) {
+    try {
+      const url = getSyncUrl()
+      const subject = encodeURIComponent('iPAS AI 應用規劃師 - 學習進度同步')
+      const body = encodeURIComponent(`您好！\n\n這是在電腦端產生的學習進度同步連結。\n請在手機或其他裝置點擊下方連結以匯入進度：\n\n${url}\n\n(注意：匯入後會覆蓋該裝置原本的進度)`)
+      
+      // Attempt to open mail app
+      window.location.href = `mailto:${email}?subject=${subject}&body=${body}`
+      
+      // Provide feedback because mailto is silent
+      setTimeout(() => {
+        alert('已嘗試開啟您的郵件軟體。如果沒有反應，請改用「複製同步連結」手動傳送。')
+      }, 500)
+    } catch (e) {
+      alert('產生連結時發生錯誤，請聯絡開發者。')
+    }
+  } else {
     alert('請輸入有效的電子信箱。')
   }
 }

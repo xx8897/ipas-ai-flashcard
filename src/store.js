@@ -82,25 +82,33 @@ export function clearQuizResults() {
   store.quizResults = {}
 }
 
-// Sync functionality
+// Sync functionality - Compact version
 export function exportState() {
+  const wrongIds = Object.entries(store.quizResults)
+    .filter(([, v]) => v === 'wrong')
+    .map(([id]) => Number(id))
+
   const data = {
-    quizResults: store.quizResults,
-    bookmarks: store.bookmarks
+    w: wrongIds,        // wrong
+    b: store.bookmarks  // bookmarks
   }
-  // Use btoa safely for short data (JSON stringified)
-  const json = JSON.stringify(data)
-  // btoa doesn't like non-latin chars, but IDs and status should be fine.
-  // To be super safe, use encodeURIComponent + btoa
-  return btoa(encodeURIComponent(json))
+  // Base64 only (encodeURIComponent is not needed since it's just numbers/brackets)
+  return btoa(JSON.stringify(data))
 }
 
 export function importState(encodedData) {
   try {
-    const json = decodeURIComponent(atob(encodedData))
+    const json = atob(encodedData)
     const data = JSON.parse(json)
-    if (data.quizResults) store.quizResults = data.quizResults
-    if (data.bookmarks) store.bookmarks = data.bookmarks
+    
+    // Convert short keys back to state
+    if (data.w) {
+      const results = {}
+      data.w.forEach(id => { results[id] = 'wrong' })
+      store.quizResults = results
+    }
+    if (data.b) store.bookmarks = data.b
+    
     return true
   } catch (e) {
     console.error('Import failed', e)

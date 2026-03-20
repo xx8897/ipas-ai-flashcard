@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "sync-json": "python ../scripts/md_to_json.py",
+    "sync-json": "python ./scripts/md_to_json.py",
     "dev": "npm run sync-json && vite",
     "build": "npm run sync-json && vite build",
     "preview": "vite preview"

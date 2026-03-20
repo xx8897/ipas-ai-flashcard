@@ -7,6 +7,7 @@ import HomeView from './views/HomeView.vue'
 import FlashcardView from './views/FlashcardView.vue'
 import QuizView from './views/QuizView.vue'
 import ReviewView from './views/ReviewView.vue'
+import StatsView from './views/StatsView.vue'
 import SyncView from './views/SyncView.vue'
 
 const router = createRouter({

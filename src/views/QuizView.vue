@@ -2,7 +2,7 @@
   <div class="space-y-6">
     <div class="flex items-center justify-between">
       <div>
-        <h1 class="text-2xl font-bold text-white">✍️ 四選一測驗</h1>
+        <h1 class="text-2xl font-bold text-white">✍️ 四選一測驗{{ modeTitle }}</h1>
         <p class="text-slate-400 text-sm mt-1">第 {{ currentIndex + 1 }} 題 / 共 {{ questions.length }} 題</p>
       </div>
       <div class="flex gap-2 text-sm">
@@ -77,9 +77,14 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRoute } from 'vue-router'
 import QuestionNote from './QuestionNote.vue'
-import { store, getFilteredQuestions, recordQuizResult, isBookmarked, toggleBookmark } from '../store'
+import { 
+  store, getFilteredQuestions, recordQuizResult, 
+  isBookmarked, toggleBookmark, getWrongQuestions, getBookmarkedQuestions 
+} from '../store'
+
+const route = useRoute()
 
 const questions = ref([])
 const currentIndex = ref(0)
@@ -89,10 +94,24 @@ const correctCount = ref(0)
 const wrongCount = ref(0)
 
 function load() {
-  questions.value = getFilteredQuestions()
+  const mode = route.query.mode
+  if (mode === 'wrong') {
+    questions.value = getWrongQuestions()
+  } else if (mode === 'bookmarked') {
+    questions.value = getBookmarkedQuestions()
+  } else {
+    questions.value = getFilteredQuestions()
+  }
   restart()
 }
 onMounted(load)
+
+const modeTitle = computed(() => {
+  const mode = route.query.mode
+  if (mode === 'wrong') return ' (錯題重測)'
+  if (mode === 'bookmarked') return ' (收藏複習)'
+  return ''
+})
 
 const current = computed(() => questions.value[currentIndex.value] || {})
 const progressPct = computed(() =>

@@ -57,6 +57,27 @@
       </div>
     </div>
 
+    <!-- Quick Actions -->
+    <div class="flex gap-4">
+      <RouterLink to="/quiz?mode=bookmarked" v-if="bookmarkCount > 0"
+        class="flex-1 glass p-4 flex items-center justify-between group hover:border-yellow-400/40 transition-all">
+        <div>
+          <h3 class="font-bold text-white">⭐ 收藏星號題</h3>
+          <p class="text-xs text-slate-400">目前共有 {{ bookmarkCount }} 題</p>
+        </div>
+        <div class="text-yellow-400 group-hover:translate-x-1 transition-transform">→</div>
+      </RouterLink>
+
+      <RouterLink to="/quiz?mode=wrong" v-if="wrongCount > 0"
+        class="flex-1 glass p-4 flex items-center justify-between group hover:border-red-400/40 transition-all">
+        <div>
+          <h3 class="font-bold text-white">🔥 弱點重測 (錯題)</h3>
+          <p class="text-xs text-slate-400">目前共有 {{ wrongCount }} 題</p>
+        </div>
+        <div class="text-red-400 group-hover:translate-x-1 transition-transform">→</div>
+      </RouterLink>
+    </div>
+
     <!-- Mode Cards -->
     <div class="grid sm:grid-cols-2 gap-4">
       <RouterLink to="/flashcard" class="glass p-6 hover:border-indigo-400/40 transition-all group block">

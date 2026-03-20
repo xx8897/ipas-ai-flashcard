@@ -82,6 +82,32 @@ export function clearQuizResults() {
   store.quizResults = {}
 }
 
+// Sync functionality
+export function exportState() {
+  const data = {
+    quizResults: store.quizResults,
+    bookmarks: store.bookmarks
+  }
+  // Use btoa safely for short data (JSON stringified)
+  const json = JSON.stringify(data)
+  // btoa doesn't like non-latin chars, but IDs and status should be fine.
+  // To be super safe, use encodeURIComponent + btoa
+  return btoa(encodeURIComponent(json))
+}
+
+export function importState(encodedData) {
+  try {
+    const json = decodeURIComponent(atob(encodedData))
+    const data = JSON.parse(json)
+    if (data.quizResults) store.quizResults = data.quizResults
+    if (data.bookmarks) store.bookmarks = data.bookmarks
+    return true
+  } catch (e) {
+    console.error('Import failed', e)
+    return false
+  }
+}
+
 // Unique sources / subjects for filter UI
 export const allSources = [...new Set(questionsRaw.map(q => q.source))]
 export const allSubjects = [...new Set(questionsRaw.map(q => q.subject))]

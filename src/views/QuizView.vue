@@ -57,6 +57,9 @@
         </button>
       </div>
 
+      <!-- Question Notes -->
+      <QuestionNote v-if="!isDone" :questionId="current.id" />
+
       <!-- Explanation -->
       <Transition name="slide-fade">
         <div v-if="selected" class="border-t border-white/10 pt-4 space-y-2">
@@ -75,6 +78,7 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { RouterLink } from 'vue-router'
+import QuestionNote from './QuestionNote.vue'
 import { store, getFilteredQuestions, recordQuizResult, isBookmarked, toggleBookmark } from '../store'
 
 const questions = ref([])

@@ -35,6 +35,9 @@
         <p v-if="q.explanation" class="text-slate-400 text-sm border-t border-white/10 pt-2">
           💡 {{ q.explanation }}
         </p>
+        <div class="pt-2">
+          <QuestionNote :questionId="q.id" />
+        </div>
       </div>
     </div>
 
@@ -54,6 +57,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import QuestionNote from './QuestionNote.vue'
 import { store, getWrongQuestions, getBookmarkedQuestions, isBookmarked, toggleBookmark, clearQuizResults } from '../store'
 
 const mode = ref('wrong')

@@ -23,6 +23,8 @@ function defaultState() {
     quizResults: {},       // { [id]: 'correct' | 'wrong' }
     // Bookmarks
     bookmarks: [],         // [id, id, ...]
+    // Personal notes
+    notes: {},             // { [id]: 'text...' }
   }
 }
 
@@ -82,6 +84,19 @@ export function clearQuizResults() {
   store.quizResults = {}
 }
 
+// Note helpers
+export function getNote(id) {
+  return store.notes[id] || ''
+}
+
+export function saveNote(id, content) {
+  if (!content || !content.trim()) {
+    delete store.notes[id]
+  } else {
+    store.notes[id] = content
+  }
+}
+
 // Sync functionality - Compact version
 export function exportState() {
   const wrongIds = Object.entries(store.quizResults)
@@ -90,9 +105,9 @@ export function exportState() {
 
   const data = {
     w: wrongIds,        // wrong
-    b: store.bookmarks  // bookmarks
+    b: store.bookmarks, // bookmarks
+    n: store.notes      // notes
   }
-  // Base64 only (encodeURIComponent is not needed since it's just numbers/brackets)
   return btoa(JSON.stringify(data))
 }
 
@@ -108,6 +123,7 @@ export function importState(encodedData) {
       store.quizResults = results
     }
     if (data.b) store.bookmarks = data.b
+    if (data.n) store.notes = data.n
     
     return true
   } catch (e) {

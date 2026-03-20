@@ -67,6 +67,9 @@
       </div>
     </div>
 
+    <!-- Question Notes -->
+    <QuestionNote v-if="questions.length > 0" :questionId="current.id" />
+
     <!-- Navigation -->
     <div class="flex justify-between items-center">
       <button @click="prev" :disabled="currentIndex === 0"
@@ -84,6 +87,7 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import QuestionNote from './QuestionNote.vue'
 import { store, getFilteredQuestions, isBookmarked, toggleBookmark } from '../store'
 
 const questions = ref([])

@@ -47,15 +47,6 @@ def parse_file(fpath, meta, uid, all_questions):
         # 狀態機解析 body
         found_options = False
         for line in lines:
-            # 抓取選項: 支援 (A), （A）, -(A), 以及帶標籤的
-            m_opt = re.search(r'[（(]([A-D])[）)][ .](.+)', line)
-            if m_opt:
-                label = m_opt.group(1)
-                val = clean_html(m_opt.group(2))
-                options[label] = val
-                found_options = True
-                continue
-            
             # 抓取正確答案
             if "正確解答" in line or "✅" in line:
                 m_ans = re.search(r'[（(]([A-D])[）)]', line)
@@ -67,6 +58,15 @@ def parse_file(fpath, meta, uid, all_questions):
             if "💡" in line or "為什麼" in line or "WHY" in line:
                 explanation = re.sub(r'.*?(?:💡|為什麼|WHY)[?？\s]*', '', line)
                 explanation = clean_html(explanation)
+                continue
+
+            # 抓取選項: 支援 (A), （A）, -(A), 以及帶標籤的
+            m_opt = re.search(r'[（(]([A-D])[）)][ .](.+)', line)
+            if m_opt:
+                label = m_opt.group(1)
+                val = clean_html(m_opt.group(2))
+                options[label] = val
+                found_options = True
                 continue
             
             # 累積題目文字 (在看到選項之前)
